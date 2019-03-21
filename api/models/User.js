@@ -48,12 +48,34 @@ email status until they click the link in the confirmation email.`
       example: '2$28a8eabna301089103-13948134nad'
     },
 
-    fullName: {
+    firstName: {
       type: 'string',
       required: true,
-      description: 'Full representation of the user\'s name.',
+      description: 'Full representation of the user\'s first name.',
       maxLength: 120,
-      example: 'Mary Sue van der McHenst'
+      example: 'Mary'
+    },
+    lastName: {
+      type: 'string',
+      required: true,
+      description: 'Full representation of the user\'s last name.',
+      maxLength: 120,
+      example: 'Sue'
+    },
+
+    phone: {
+      type: 'string',
+      required: true,
+      description: 'User\'s phone number, with non-digits stripped away',
+      maxLength: 10,
+      example: '6501211121'
+    },
+    imageURL: {
+      type: 'string',
+      required: true,
+      description: 'User\'s profile image link',
+      maxLength: 300,
+      example: 'https://www.google.com/url?sa=i&source=images&cd=&cad=rja&https://media1.s-nbcnews.com/j/newscms/2019_12/2791086/190319-joe-biden-mn-0815_25373d8850cee764e502c5cfbb5717c7.fit-2000w.jpg=8&ved=2ahUKEwih2tzS85PhAhVsT98KHVfbDLAQjRx6BAgBEAU&url=https%3A%2F%2Fwww.nbcnews.com%2Fpolitics%2Fmeet-the-press%2Fjoe-biden-unlikely-win-2020-doing-things-old-fashioned-way-n984751&psig=AOvVaw1wSc7iqTNWvWFntTOx0AjM&ust=1553280694530808'
     },
 
     isSuperAdmin: {
@@ -72,6 +94,12 @@ On the other hand, for an e-commerce website like Walmart.com that has undergone
 by a large team, those administrative features might be split across a few different roles.
 
 So, while this \`isSuperAdmin\` demarcation might not be the right approach forever, it's a good place to start.`
+    },
+    role: {
+      type: 'string',
+      description: 'The role of a user, either admin, street outreach worker, or reentrant',
+      isIn: ['admin', 'outreach', 'standard'],
+
     },
 
     passwordResetToken: {
@@ -96,64 +124,18 @@ So, while this \`isSuperAdmin\` demarcation might not be the right approach fore
       example: 1502844074211
     },
 
-    stripeCustomerId: {
-      type: 'string',
-      protect: true,
-      description: 'The id of the customer entry in Stripe associated with this user (or empty string if this user is not linked to a Stripe customer -- e.g. if billing features are not enabled).',
-      extendedDescription:
-`Just because this value is set doesn't necessarily mean that this user has a billing card.
-It just means they have a customer entry in Stripe, which might or might not have a billing card.`
-    },
+    // tosAcceptedByIp: {
+    //   type: 'string',
+    //   description: 'The IP (ipv4) address of the request that accepted the terms of service.',
+    //   extendedDescription: 'Useful for certain types of businesses and regulatory requirements (KYC, etc.)',
+    //   moreInfoUrl: 'https://en.wikipedia.org/wiki/Know_your_customer'
+    // },
 
-    hasBillingCard: {
-      type: 'boolean',
-      description: 'Whether this user has a default billing card hooked up as their payment method.',
-      extendedDescription:
-`More specifically, this indcates whether this user record's linked customer entry in Stripe has
-a default payment source (i.e. credit card).  Note that a user have a \`stripeCustomerId\`
-without necessarily having a billing card.`
-    },
-
-    billingCardBrand: {
-      type: 'string',
-      example: 'Visa',
-      description: 'The brand of this user\'s default billing card (or empty string if no billing card is set up).',
-      extendedDescription: 'To ensure PCI compliance, this data comes from Stripe, where it reflects the user\'s default payment source.'
-    },
-
-    billingCardLast4: {
-      type: 'string',
-      example: '4242',
-      description: 'The last four digits of the card number for this user\'s default billing card (or empty string if no billing card is set up).',
-      extendedDescription: 'To ensure PCI compliance, this data comes from Stripe, where it reflects the user\'s default payment source.'
-    },
-
-    billingCardExpMonth: {
-      type: 'string',
-      example: '08',
-      description: 'The two-digit expiration month from this user\'s default billing card, formatted as MM (or empty string if no billing card is set up).',
-      extendedDescription: 'To ensure PCI compliance, this data comes from Stripe, where it reflects the user\'s default payment source.'
-    },
-
-    billingCardExpYear: {
-      type: 'string',
-      example: '2023',
-      description: 'The four-digit expiration year from this user\'s default billing card, formatted as YYYY (or empty string if no credit card is set up).',
-      extendedDescription: 'To ensure PCI compliance, this data comes from Stripe, where it reflects the user\'s default payment source.'
-    },
-
-    tosAcceptedByIp: {
-      type: 'string',
-      description: 'The IP (ipv4) address of the request that accepted the terms of service.',
-      extendedDescription: 'Useful for certain types of businesses and regulatory requirements (KYC, etc.)',
-      moreInfoUrl: 'https://en.wikipedia.org/wiki/Know_your_customer'
-    },
-
-    lastSeenAt: {
-      type: 'number',
-      description: 'A JS timestamp (epoch ms) representing the moment at which this user most recently interacted with the backend while logged in (or 0 if they have not interacted with the backend at all yet).',
-      example: 1502844074211
-    },
+    // lastSeenAt: {
+    //   type: 'number',
+    //   description: 'A JS timestamp (epoch ms) representing the moment at which this user most recently interacted with the backend while logged in (or 0 if they have not interacted with the backend at all yet).',
+    //   example: 1502844074211
+    // },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
