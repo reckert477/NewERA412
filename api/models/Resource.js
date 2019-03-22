@@ -20,10 +20,12 @@ module.exports = {
       example: 'Abcde'
     },
     startDate: {
-      type: 'date'
+      type: 'string',
+      columnType: 'date'
     },
     endDate: {
-      type: 'date'
+      type: 'string',
+      columnType: 'date'
     },
     phone: {
       type: 'string',
@@ -39,6 +41,13 @@ module.exports = {
       isEmail: true,
       maxLength: 200,
       example: 'mary.sue@example.com'
+    },
+    address: {
+      type: 'string',
+      required: true,
+      unique: true,
+      maxLength: 200,
+      example: '5000 Forbes Ave, Pittsburgh PA 15213'
     },
     imageURL: {
       type: 'string',

@@ -26,6 +26,9 @@ module.exports = {
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
     user: {
       model: 'User'
+    },
+    outreachWorker: {
+      model: 'OutreachWorker'
     }
   },
 
