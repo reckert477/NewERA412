@@ -13,7 +13,8 @@ module.exports = {
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
     date: {
-      type: 'date'
+      type: 'string',
+      columnType: 'date'
     },
     worker: {
       model: 'OutreachWorker'
@@ -28,7 +29,8 @@ module.exports = {
       type: 'boolean'
     },
     dateAccessed: {
-      type: 'date'
+      type: 'string',
+      columnType: 'date'
     }
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
