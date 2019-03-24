@@ -20,10 +20,12 @@ module.exports = {
       example: 'Abcde'
     },
     startDate: {
-      type: 'date'
+      type: 'string',
+      columnType: 'date'
     },
     endDate: {
-      type: 'date'
+      type: 'string',
+      columnType: 'date'
     },
     phone: {
       type: 'string',
