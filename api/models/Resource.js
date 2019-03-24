@@ -42,6 +42,13 @@ module.exports = {
       maxLength: 200,
       example: 'mary.sue@example.com'
     },
+    address: {
+      type: 'string',
+      required: true,
+      unique: true,
+      maxLength: 200,
+      example: '5000 Forbes Ave, Pittsburgh PA 15213'
+    },
     imageURL: {
       type: 'string',
       required: true,
